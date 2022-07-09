@@ -1,22 +1,22 @@
-interface A {
-    fun saveName(name: String)
+interface Profile {
+    fun saveToFavorites(name: String)
 }
 
-interface B {
+interface Logger {
     fun log(message: String)
 }
 
-class AImpl(private val b: B) : A {
+class DefaultProfile(private val logger: Logger) : Profile {
 
-    val names = mutableListOf<String>()
+    val favorites = mutableListOf<String>()
 
-    override fun saveName(name: String) {
-        names += name
-        b.log("The $name saved")
+    override fun saveToFavorites(name: String) {
+        favorites += name
+        logger.log("The $name added to favorites list")
     }
 }
 
-class BImpl : B {
+class DefaultLogger : Logger {
 
     override fun log(message: String) {
         println(message)
@@ -24,11 +24,11 @@ class BImpl : B {
 }
 
 fun main() {
-    val b = BImpl()
-    val a = AImpl(b)
+    val logger = DefaultLogger()
+    val profile = DefaultProfile(logger)
 
     val names = arrayOf("Kotlin", "TestDouble", "Dummy")
     for (name in names) {
-        a.saveName(name)
+        profile.saveToFavorites(name)
     }
 }

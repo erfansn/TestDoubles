@@ -5,20 +5,20 @@ import kotlin.test.assertEquals
  * The Dummy is the simplest test double.
  * It has the sole purpose of being passed as argument, while not having much relevance to the test itself.
  */
-class DummyB : B {
+class LoggerDummy : Logger {
 
     override fun log(message: String) = Unit
 }
 
-class TestA {
+class TestDefaultProfile {
 
     @Test
     fun shouldSaveNameWhenPassedToArgument() {
         val name = "Dummy"
-        val a = AImpl(DummyB())
+        val profile = DefaultProfile(LoggerDummy())
 
-        a.saveName(name)
+        profile.saveToFavorites(name)
 
-        assertEquals(a.names.first(), name)
+        assertEquals(profile.favorites.first(), name)
     }
 }
