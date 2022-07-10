@@ -10,7 +10,7 @@ class LoggerDummy : Logger {
     override fun log(message: String) = Unit
 }
 
-class TestDefaultProfile {
+class DefaultProfileTest {
 
     @Test
     fun shouldSaveNameWhenPassedToArgument() {
