@@ -28,7 +28,7 @@ class ConnectionManagerImpl : ConnectionManager {
     override val connections = mutableMapOf<PeripheralDevice, CentralDevice?>()
 
     override fun PeripheralDevice.connectTo(centralDevice: CentralDevice) {
-        check(!connected) { "For each peripheral device only one and one central device can be connected" }
+        check(!connected) { "For each peripheral device one and only one central device can be connected" }
 
         connections[this] = centralDevice
     }
