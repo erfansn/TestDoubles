@@ -1,5 +1,4 @@
 import kotlin.test.Test
-import java.lang.Thread.sleep
 import kotlin.test.assertEquals
 
 /**
@@ -10,7 +9,6 @@ import kotlin.test.assertEquals
  */
 class FakeCryptocurrencyApi : CryptocurrencyApi {
     override fun fetchSellPrice(symbol: Symbol): Float {
-        sleep(1000)
         return when (symbol) {
             Symbol.BTC -> 2000f
             Symbol.ETC -> 800f
