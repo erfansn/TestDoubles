@@ -1,3 +1,4 @@
+import MockWebService.Companion.any
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
@@ -23,6 +24,10 @@ class MockWebService : WebService {
 
         assertEquals(expectedCount, calledCount - expectedCount)
     }
+
+    companion object {
+        fun any() = User("", "")
+    }
 }
 
 class UserAuthenticationTest {
@@ -35,6 +40,6 @@ class UserAuthenticationTest {
 
         userAuthentication.signUp(testerUser)
 
-        mockWebService.verify(countInvoke = 1) { mockWebService.registerUser(testerUser) }
+        mockWebService.verify(countInvoke = 1) { mockWebService.registerUser(any()) }
     }
 }
